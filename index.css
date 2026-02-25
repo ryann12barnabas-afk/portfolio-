@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Dark/Black Background Base */
+  --background: 240 10% 4%;
+  --foreground: 210 40% 98%;
+
+  /* Neon Cyan Accent */
+  --primary: 190 100% 50%;
+  --primary-foreground: 240 10% 4%;
+  
+  /* Neon Purple/Pink Accent */
+  --accent: 280 100% 60%;
+  --accent-foreground: 210 40% 98%;
+
+  /* Subtle Card Backgrounds (Glassmorphism base) */
+  --card: 240 10% 6%;
+  --card-foreground: 210 40% 98%;
+  --border: 240 10% 12%;
+  
+  --muted: 240 10% 10%;
+  --muted-foreground: 240 10% 65%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+
+  --ring: 190 100% 50%;
+  
+  --radius: 1rem;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary overflow-x-hidden;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-tight;
+  }
+  
+  code {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism utility */
+  .glass {
+    @apply bg-white/[0.02] backdrop-blur-xl border border-white/[0.05];
+  }
+  
+  .glass-card {
+    @apply bg-gradient-to-b from-white/[0.04] to-transparent backdrop-blur-xl border border-white/[0.05] shadow-[0_8px_32px_rgba(0,0,0,0.4)];
+  }
+
+  /* Cyber Glows */
+  .neon-border {
+    @apply border border-primary/50 shadow-[0_0_15px_rgba(0,255,255,0.2)] hover:shadow-[0_0_25px_rgba(0,255,255,0.4)] hover:border-primary transition-all duration-300;
+  }
+  
+  .neon-text {
+    @apply text-primary drop-shadow-[0_0_8px_rgba(0,255,255,0.5)];
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+  
+  /* Hide scrollbar for clean futuristic look */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Smooth scrolling for entire page */
+html {
+  scroll-behavior: smooth;
+}
